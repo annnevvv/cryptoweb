@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 
     'accounts.apps.MembersConfig',
 
-    'taggait',
+    # 'taggait',
+    # 'rest_framework',
 
     'homepage',
     'accounts',
@@ -138,3 +139,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/members/dashboard'
 
 LOGOUT_REDIRECT_URL = '/homepage'
+
+
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }
