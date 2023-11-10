@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 
 
 class UserAccountProfile(models.Model):
-    users = models.ManyToManyField(User)
+    users = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
 class TransactionDiary(models.Model):
-    list_of_tr = models.CharField(0)
+    list_of_tr = models.CharField(max_length=100)
