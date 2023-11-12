@@ -137,5 +137,4 @@ GitHub.sublime-settings
 .history
 
 # utils
-.utils
-utils
+utils/*
