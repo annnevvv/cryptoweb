@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     # 'accounts.apps.MembersConfig',
 
     # 'taggait',
-    # 'rest_framework',
+    'rest_framework',
 
     'accounts',
     'api',
@@ -142,10 +142,10 @@ LOGIN_REDIRECT_URL = '/members/dashboard'
 LOGOUT_REDIRECT_URL = '/homepage'
 
 
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
