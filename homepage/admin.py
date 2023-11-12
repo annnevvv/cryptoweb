@@ -5,6 +5,7 @@ from django.contrib import admin
 from.models import CryptocurrencyExchange, Cryptocurrency
 
 admin.site.register(CryptocurrencyExchange)
+admin.site.register(Cryptocurrency)
 class CryptocurrencyExchangeAdmin(admin.ModelAdmin):
     list_display = '__all__'
 
