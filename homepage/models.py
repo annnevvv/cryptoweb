@@ -4,8 +4,8 @@ from django.db import models
 
 
 class CryptocurrencyExchange(models.Model):
-    title = models.CharField()
-    country = models.CharField()
+    title = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
     image = models.ImageField()
     trust_score = models.PositiveIntegerField()
     volume = models.PositiveIntegerField()

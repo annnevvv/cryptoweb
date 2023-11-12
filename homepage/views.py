@@ -8,7 +8,10 @@ from django.views.generic import ListView, DetailView
 class HomepageView(View):
     template_name = 'index.html'
 
+
 class CryptocurrencyExchangeListView(ListView):
     template_name = 'index.html'
+
+
 class CryptocurrencyExchangeDetailView(DetailView):
     template_name = 'index.html'
