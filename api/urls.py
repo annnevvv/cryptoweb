@@ -7,7 +7,8 @@ from django.conf.urls.static import static
 from .views import CryptocurrencyExchangeViewSet
 
 router = routers.DefaultRouter()
-router.register('crypto_exchange', CryptocurrencyExchangeViewSet)
+router.register('cryptocurrency_exchange', CryptocurrencyExchangeViewSet)
+router.register('cryptocurrency', CryptocurrencyViewSet)
 
 app_name = 'api'
 
