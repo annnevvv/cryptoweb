@@ -11,6 +11,9 @@ class CryptocurrencyExchange(models.Model):
     volume = models.PositiveIntegerField()
     cybersec_score = models.PositiveIntegerField()
 
+    def __str__(self) -> str:
+        return super().__str__()
+
 
 class Cryptocurrency(models.Model):
     title = models.CharField(max_length=100)
@@ -23,3 +26,6 @@ class Cryptocurrency(models.Model):
     course_1m = models.IntegerField()
     volume = models.PositiveIntegerField()
     capitalization = models.PositiveIntegerField()
+
+    def __str__(self) -> str:
+        return super().__str__()
