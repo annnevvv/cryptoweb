@@ -6,12 +6,17 @@ from django.dispatch import receiver
 # Create your models here.
 
 
-class UserAccountProfile(models.Model):
-    users = models.ForeignKey(User, on_delete=models.CASCADE)
-    avatar = models.ImageField()
+def user_avatar_image_path(instance, filename):
+    return f'users/{instance.user.id}/avatar/{filename}'
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to=user_avatar_image_path,
+                               default='koteł.jpg')
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
 
 class TransactionDiary(models.Model):
@@ -21,9 +26,9 @@ class TransactionDiary(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserAccountProfile.objects.create(user=instance)
+        UserProfile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.userprofilemodel.save()
+    instance.userprofile.save()
