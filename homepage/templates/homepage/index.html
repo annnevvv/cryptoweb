@@ -1,2 +1,17 @@
-{% extends 'layout.html' %} {% load static %} {% block title %} {% endblock %}
-{% block content %} {% for %} {% endblock %}
+{% extends 'layout.html' %} 
+{% load static %} 
+
+{% block title %} {% endblock %}
+
+{% block content %} 
+{% for cc in crypto_cryptocurrency %} 
+    <p>cc.name</p>
+    <p>cc.short</p>
+{% endfor %}
+
+{% for ce in crypto_cryptocurrency_exchange %} 
+    <p>ce.name</p>
+    <p>ce.short</p>
+{% endfor %}
+
+{% endblock %}
