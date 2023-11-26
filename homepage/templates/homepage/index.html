@@ -1,17 +1,39 @@
-{% extends 'layout.html' %} 
-{% load static %} 
-
-{% block title %} {% endblock %}
-
+{% extends "base.html" %} 
+{% load static %}
+{% load static %} {% block title %} 
+{% endblock %}
 {% block content %} 
-{% for cc in crypto_cryptocurrency %} 
-    <p>cc.name</p>
-    <p>cc.short</p>
+<section style="margin: 1rem;">
+<article>
+<h2>crypto coins</h2>
+{% for cc in crypto_cryptocurrency %}
+<div style="display: flex; gap: 10px; border-bottom: solid 1px black;
+                background: 
+                {% if forloop.counter0|divisibleby:2 %}
+                  lightgrey                
+                {% else %}
+                  white
+                {% endif %}">
+  <p style="width: 4rem">cc.name</p>
+  <p style="width: 4rem">cc.short</p>
+</div>
 {% endfor %}
+</article>
 
-{% for ce in crypto_cryptocurrency_exchange %} 
-    <p>ce.name</p>
-    <p>ce.short</p>
-{% endfor %}
-
+<article>
+<h2>crypto exchange</h2>
+{% for ce in crypto_cryptocurrency_exchange %}
+<div style="display: flex; gap: 10px; border-bottom: solid 1px black;
+                background: 
+                {% if forloop.counter0|divisibleby:2 %}
+                  lightgrey                
+                {% else %}
+                  white
+                {% endif %}">
+  <p style="width: 4rem">ce.name</p>
+  <p style="width: 4rem">ce.short</p>
+</div>
+{% endfor %} 
+</article>
+<section>
 {% endblock %}

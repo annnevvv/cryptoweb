@@ -8,7 +8,7 @@ from homepage.models import CryptoCryptocurrency, CryptoCryptocurrencyExchange
 
 
 class HomepageView(View):
-    template_name = 'accounts/index.html'
+    template_name = 'homepage/index.html'
 
     def get(self, request, *args, **kwargs):
         crypto_cryptocurrency = CryptoCryptocurrency.objects.all()
