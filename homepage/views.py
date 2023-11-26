@@ -6,7 +6,16 @@ from django.views.generic import ListView, DetailView
 
 
 class HomepageView(View):
-    template_name = 'index.html'
+    template_name = 'accounts/index.html'
+
+    def get(self, request, *args, **kwargs):
+        crypto_cryptocurrency = CryptoCryptocurrency.objects.all()
+        crypto_cryptocurrency_exchange = CryptoCryptocurrencyExchange.objects.all()
+
+        context = {'crypto_cryptocurrency': crypto_cryptocurrency,
+                   'crypto_cryptocurrency_exchange': crypto_cryptocurrency_exchange}
+
+        return render(request, self.template_name, context)
 
 
 class CryptocurrencyExchangeListView(ListView):
