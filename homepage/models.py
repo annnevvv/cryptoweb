@@ -4,7 +4,9 @@ from django.db import models
 
 
 class CryptocurrencyExchange(models.Model):
-    title = models.CharField(max_length=100)
+
+    name = models.CharField(max_length=100)
+    short = models.CharField(max_length=3, default='aaa')
     country = models.CharField(max_length=100)
     image = models.ImageField()
     trust_score = models.PositiveIntegerField()
@@ -12,11 +14,13 @@ class CryptocurrencyExchange(models.Model):
     cybersec_score = models.PositiveIntegerField()
 
     def __str__(self) -> str:
-        return super().__str__()
+        return f'{self.name}'
 
 
 class Cryptocurrency(models.Model):
-    title = models.CharField(max_length=100)
+
+    name = models.CharField(max_length=100)
+    short = models.CharField(max_length=3, default='sss')
     country = models.CharField(max_length=100)
     image = models.ImageField()
     course_current = models.PositiveIntegerField()
@@ -28,4 +32,4 @@ class Cryptocurrency(models.Model):
     capitalization = models.PositiveIntegerField()
 
     def __str__(self) -> str:
-        return super().__str__()
+        return f'{self.name}'

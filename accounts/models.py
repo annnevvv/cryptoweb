@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from homepage.models import Cryptocurrency
-
 # Create your models here.
 
 
@@ -59,14 +58,14 @@ class Transaction(models.Model):
 
     # TYPE_CHOICES = [(BUY, 'buy'), (SELL, 'sell')]
 
-    diary = models.OneToOneField(
-        TransactionDiary, on_delete=models.CASCADE, default=None)
+    diary = models.ForeignKey(
+        TransactionDiary, on_delete=models.CASCADE)
     type = models.CharField(choices=Type.choices,
                             default=Type.SELL, max_length=3)
     volume = models.PositiveBigIntegerField()
     date_of_transaction = models.DateField()
-    coin = models.OneToOneField(
-        Cryptocurrency, on_delete=models.CASCADE, default=None)
+    coin = models.ForeignKey(
+        Cryptocurrency, on_delete=models.CASCADE)
     buy_price_USD = models.PositiveBigIntegerField()
     sell_price_USD = models.PositiveBigIntegerField()
 
