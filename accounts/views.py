@@ -31,7 +31,7 @@ class DashboardView(View):
         user_transaction_diary = TransactionDiary.objects.get(
             user_profile=user_profile)
         user_transactions = Transaction.objects.filter(
-            diary=user_transaction_diary)
+            diary=user_transaction_diary).order_by('date_of_transaction')
 
         context = {'user_profile': user_profile,
                    'user_transaction_diary': user_transaction_diary,

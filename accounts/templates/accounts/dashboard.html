@@ -11,11 +11,29 @@
     <h2>Portfolio</h2>
     <p>{{ user_transactiondiary }}</p>
   </article>
-  <article>
-    <h2>Transaction</h2>
+  <article style="max-width: 1200px; margin: 1rem">
+    <h2>Transactions</h2>
+
+    <div
+      style="
+        display: flex;
+        gap: 10px;
+        background: darkred;
+        color: white;
+        border-bottom: solid 2px white;
+      "
+    >
+      <p>Image</p>
+      <p style="width: 4rem">Type</p>
+      <p style="width: 5rem">coin</p>
+      <p style="width: 10rem">date</p>
+      <p style="width: 8rem">volume</p>
+      <p style="width: 8rem">buy_price_USD</p>
+      <p style="width: 8rem">trans.sell_price_USD</p>
+    </div>
     {% for trans in user_transactions %}
     <div
-      style="display: flex; gap: 10px; margin: 1rem; 
+      style="display: flex; gap: 10px; border-bottom: solid 1px black;
                 background: 
                 {% if trans.type == 'S' %}
                   lightgrey
@@ -25,12 +43,15 @@
                   white
                 {% endif %}"
     >
-      <p style="width: 2rem">{{ trans.type }}</p>
+      <a style="width: 4rem"
+        ><img style="width: 4rem" src="{{ trans.coin.image.url  }}" alt=""
+      /></a>
+      <p style="width: 4rem">{{ trans.type }}</p>
       <p style="width: 5rem">{{ trans.coin }}</p>
       <p style="width: 10rem">{{ trans.date_of_transaction }}</p>
-      <p style="width: 2rem">{{ trans.volume }}</p>
-      <p style="width: 2rem">{{ trans.buy_price_USD }}</p>
-      <p style="width: 2rem">{{ trans.sell_price_USD }}</p>
+      <p style="width: 8rem">{{ trans.volume }}</p>
+      <p style="width: 8rem">{{ trans.buy_price_USD }}</p>
+      <p style="width: 8rem">{{ trans.sell_price_USD }}</p>
     </div>
     {% endfor %}
   </article>
