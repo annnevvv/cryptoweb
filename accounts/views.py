@@ -6,7 +6,7 @@ from django.views import View
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import UserProfile, TransactionDiary
+from .models import UserProfile, TransactionDiary, Transaction
 
 # Create your views here.
 
@@ -30,8 +30,11 @@ class DashboardView(View):
         user_profile = UserProfile.objects.get(user=request.user)
         user_transaction_diary = TransactionDiary.objects.get(
             user_profile=user_profile)
+        user_transactions = Transaction.objects.filter(
+            diary=user_transaction_diary).order_by('date_of_transaction')
 
         context = {'user_profile': user_profile,
-                   'user_transaction_diary': user_transaction_diary}
+                   'user_transaction_diary': user_transaction_diary,
+                   'user_transactions': user_transactions}
 
         return render(request, self.template_name, context)
