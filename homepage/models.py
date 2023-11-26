@@ -11,6 +11,7 @@ class CryptocurrencyExchange(models.Model):
     image = models.ImageField()
     trust_score = models.PositiveIntegerField()
     volume = models.PositiveIntegerField()
+    liqudity = models.PositiveIntegerField(default=None)
     cybersec_score = models.PositiveIntegerField()
 
     def __str__(self) -> str:
@@ -23,11 +24,11 @@ class Cryptocurrency(models.Model):
     short = models.CharField(max_length=3, default='sss')
     country = models.CharField(max_length=100)
     image = models.ImageField()
-    course_current = models.PositiveIntegerField()
-    course_1h = models.IntegerField()
-    course_1d = models.IntegerField()
-    course_1w = models.IntegerField()
-    course_1m = models.IntegerField()
+    price_current = models.PositiveIntegerField()
+    price_1h = models.IntegerField()
+    price_1d = models.IntegerField()
+    price_1w = models.IntegerField()
+    price_1m = models.IntegerField()
     volume = models.PositiveIntegerField()
     capitalization = models.PositiveIntegerField()
 
