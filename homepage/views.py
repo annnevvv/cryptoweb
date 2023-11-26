@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView
 
+from homepage.models import CryptoCryptocurrency, CryptoCryptocurrencyExchange
+
 # Create your views here.
 
 

@@ -6,7 +6,6 @@ from django.views import View
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 
-from homepage.models import CryptoCryptocurrency, CryptoCryptocurrencyExchange
 from .models import UserProfile, TransactionDiary, Transaction
 
 # Create your views here.
