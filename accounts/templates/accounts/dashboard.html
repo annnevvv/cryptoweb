@@ -11,7 +11,43 @@
     <h2>Portfolio</h2>
     <p>{{ user_transactiondiary }}</p>
   </article>
-
+  <article>
+    <h2>Transaction</h2>
+    {% for trans in user_transactions %}
+    <div
+      style="display: flex; gap: 10px; margin: 1rem; 
+                background: 
+                {% if trans.type == 'S' %}
+                  lightgrey
+                {% elif trans.type == 'B' %}
+                  grey
+                {% else %}
+                  white
+                {% endif %}"
+    >
+      <p style="width: 2rem">{{ trans.type }}</p>
+      <p style="width: 5rem">{{ trans.coin }}</p>
+      <p style="width: 10rem">{{ trans.date_of_transaction }}</p>
+      <p style="width: 2rem">{{ trans.volume }}</p>
+      <p style="width: 2rem">{{ trans.buy_price_USD }}</p>
+      <p style="width: 2rem">{{ trans.sell_price_USD }}</p>
+    </div>
+    {% endfor %}
+  </article>
+</section>
+{% endblock %} {% extends "base.html" %} {% load static %} {% block content %}
+<h1>Dashboard</h1>
+<h2>Welcome @{{ user.username }} !</h2>
+<section>
+  <h2>Profile</h2>
+  <p>{{ user_profile }}</p>
+  <p>{{ user_transactiondiary }}</p>
+</section>
+<section>
+  <article>
+    <h2>Portfolio</h2>
+    <p>{{ user_transactiondiary }}</p>
+  </article>
   <article style="max-width: 1200px; margin: 1rem">
     <h2>Transactions</h2>
 
@@ -35,7 +71,6 @@
     {% for trans in user_transactions %}
     <div
       style="display: flex; gap: 10px; border-bottom: solid 1px black;
-
                 background: 
                 {% if trans.type == 'S' %}
                   lightgrey
