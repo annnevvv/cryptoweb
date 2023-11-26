@@ -1,14 +1,9 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
-{% block title %}Logout{% endblock %}
+<h1>Logout</h1>
 
-{% block content %}
+<p>You have been successfully logged out.</p>
 
-    <h1>Logout</h1>
-
-    <p>You have been successfully logged out.</p>
-
-    <a href="{% url 'users:dashboard' %}">Back to Dashboard</a>
+<a href="{% url 'accounts:dashboard' %}">Back to Dashboard</a>
 
 {% endblock %}
