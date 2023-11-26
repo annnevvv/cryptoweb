@@ -1,4 +1,13 @@
-{% extends "base.html" %} hy {% load static %} hy {% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <h1>Dashboard</h1>
-<h1>Welcome @{{ user.authorized }} !</h1>
+<h2>Welcome @{{ user.username }} !</h2>
+<section>
+  <h2>Profile</h2>
+  <p>{{ user_profile }}</p>
+  <p>{{ user_transactiondiary }}</p>
+</section>
+<section>
+  <h2>Portfolio</h2>
+  <p>{{ user_transactiondiary }}</p>
+</section>
 {% endblock %}

@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from homepage.models import Cryptocurrency
+
 # Create your models here.
 
 
@@ -19,10 +21,6 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-class TransactionDiary(models.Model):
-    list_of_tr = models.CharField(max_length=100)
-
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -32,3 +30,45 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
+
+
+class TransactionDiary(models.Model):
+    user_profile = models.OneToOneField(
+        UserProfile, on_delete=models.CASCADE, default=None)
+    # list_of_tr = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f'{self.user_profile.user.username} Diary'
+
+
+@receiver(post_save, sender=UserProfile)
+def create_user_tranasaction_diary(sender, instance, created, **kwargs):
+    if created:
+        TransactionDiary.objects.create(user_profile=instance)
+
+
+@receiver(post_save, sender=UserProfile)
+def save_user_tranasaction_diary(sender, instance, **kwargs):
+    instance.transactiondiary.save()
+
+
+class Transaction(models.Model):
+    class Type(models.TextChoices):
+        BUY = 'B'
+        SELL = 'S'
+
+    # TYPE_CHOICES = [(BUY, 'buy'), (SELL, 'sell')]
+
+    diary = models.OneToOneField(
+        TransactionDiary, on_delete=models.CASCADE, default=None)
+    type = models.CharField(choices=Type.choices,
+                            default=Type.SELL, max_length=3)
+    volume = models.PositiveBigIntegerField()
+    date_of_transaction = models.DateField()
+    coin = models.OneToOneField(
+        Cryptocurrency, on_delete=models.CASCADE, default=None)
+    buy_price_USD = models.PositiveBigIntegerField()
+    sell_price_USD = models.PositiveBigIntegerField()
+
+    def __str__(self):
+        return f'{self.coin} / {self.date_of_transaction} / {self.type}'
