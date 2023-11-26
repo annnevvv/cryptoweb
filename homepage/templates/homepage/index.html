@@ -2,7 +2,35 @@
 {% endblock %} {% block content %}
 <section style="margin: 1rem">
   <article>
+    <h2>COŚ TAM</h2>
+  </article>
+  <article>
+    <h2>TWITTER</h2>
+  </article>
+  <article>
     <h2>crypto coins</h2>
+    <div
+      style="
+        display: flex;
+        gap: 10px;
+        border-bottom: solid 1px black;
+        background: darkred;
+        color: white;
+      "
+    >
+      <p style="width: 4rem">LOGO</p>
+      <p style="width: 4rem">short</p>
+      <p style="width: 8rem">name /p></p>
+      <p style="width: 8rem">country</p>
+      <p style="width: 8rem">price_current</p>
+      <p style="width: 8rem">price_1h</p>
+      <p style="width: 8rem">price_1d</p>
+      <p style="width: 8rem">price_1w</p>
+      <p style="width: 8rem">price_1m</p>
+      <p style="width: 8rem">volume</p>
+      <p style="width: 8rem">capitalization</p>
+    </div>
+
     {% for cc in crypto_cryptocurrency %}
     <div
       style="display: flex; gap: 10px; border-bottom: solid 1px black;
@@ -13,14 +41,45 @@
                   white
                 {% endif %}"
     >
-      <p style="width: 4rem">cc.name</p>
-      <p style="width: 4rem">cc.short</p>
+      <a style="width: 4rem"
+        ><img style="width: 4rem" src="{{ cc.image.url  }}" alt=""
+      /></a>
+      <p style="width: 4rem">{{ cc.short }}</p>
+      <p style="width: 8rem">{{ cc.name }}</p>
+      <p style="width: 8rem">{{ cc.country }}</p>
+      <p style="width: 8rem">{{ cc.price_current }}</p>
+      <p style="width: 8rem">{{ cc.price_1h }}</p>
+      <p style="width: 8rem">{{ cc.price_1d }}</p>
+      <p style="width: 8rem">{{ cc.price_1w }}</p>
+      <p style="width: 8rem">{{ cc.price_1m }}</p>
+      <p style="width: 8rem">{{ cc.volume }}</p>
+      <p style="width: 8rem">{{ capitalization }}</p>
     </div>
     {% endfor %}
   </article>
 
   <article>
     <h2>crypto exchange</h2>
+
+    <div
+      style="
+        display: flex;
+        gap: 10px;
+        border-bottom: solid 1px black;
+        background: darkred;
+        color: white;
+      "
+    >
+      <p style="width: 4rem">LOGO</p>
+      <p style="width: 4rem">short</p>
+      <p style="width: 8rem">name</p>
+      <p style="width: 8rem">country</p>
+      <p style="width: 8rem">trust_score</p>
+      <p style="width: 8rem">volume</p>
+      <p style="width: 8rem">liqudity</p>
+      <p style="width: 8rem">cybersec_score</p>
+    </div>
+
     {% for ce in crypto_cryptocurrency_exchange %}
     <div
       style="display: flex; gap: 10px; border-bottom: solid 1px black;
@@ -31,8 +90,16 @@
                   white
                 {% endif %}"
     >
-      <p style="width: 4rem">ce.name</p>
-      <p style="width: 4rem">ce.short</p>
+      <a style="width: 4rem">
+        <img style="width: 4rem" src="{{ ce.image.url  }}" alt=""
+      /></a>
+      <p style="width: 4rem">{{ ce.short }}</p>
+      <p style="width: 8rem">{{ ce.name }}</p>
+      <p style="width: 8rem">{{ ce.country }}</p>
+      <p style="width: 8rem">{{ ce.trust_score }}</p>
+      <p style="width: 8rem">{{ ce.volume }}</p>
+      <p style="width: 8rem">{{ ce.liqudity }}</p>
+      <p style="width: 8rem">{{ ce.cybersec_score }}</p>
     </div>
     {% endfor %}
   </article>
