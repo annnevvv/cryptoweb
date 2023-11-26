@@ -4,12 +4,16 @@
 <section>
   <h2>Profile</h2>
   <p>{{ user_profile }}</p>
-  <p>{{ user_transactiondiary }}</p>
 </section>
 <section>
   <article>
     <h2>Portfolio</h2>
-    <p>{{ user_transactiondiary }}</p>
+
+    <p>{{ user_transaction_diary }}</p>
+    {% comment %}
+    <p>Volume for : {{ user_transaction_diary.total_volume_for_coin.Jakas }}</p>
+    {% endcomment %}
+    <p>{{ user_transaction_diary }}</p>
   </article>
   <article style="max-width: 1200px; margin: 1rem">
     <h2>Transactions</h2>
@@ -23,14 +27,14 @@
         border-bottom: solid 2px white;
       "
     >
-      <p>Image</p>
+      <p style="width: 4rem">Image</p>
       <p style="width: 4rem">Type</p>
       <p style="width: 5rem">coin</p>
       <p style="width: 10rem">date</p>
       <p style="width: 8rem">volume</p>
-      <p style="width: 8rem">buy_price_USD</p>
-      <p style="width: 8rem">trans.sell_price_USD</p>
+      <p style="width: 8rem">price_USD</p>
     </div>
+
     {% for trans in user_transactions %}
     <div
       style="display: flex; gap: 10px; border-bottom: solid 1px black;
@@ -50,8 +54,8 @@
       <p style="width: 5rem">{{ trans.coin }}</p>
       <p style="width: 10rem">{{ trans.date_of_transaction }}</p>
       <p style="width: 8rem">{{ trans.volume }}</p>
-      <p style="width: 8rem">{{ trans.buy_price_USD }}</p>
-      <p style="width: 8rem">{{ trans.sell_price_USD }}</p>
+      <p style="width: 8rem">{{ trans.price_USD }}</p>
+      <p style="width: 8rem">{{ trans.summary_volume }}</p>
     </div>
     {% endfor %}
   </article>

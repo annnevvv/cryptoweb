@@ -2,12 +2,15 @@ from django.contrib import admin
 
 # Register your models here.
 
-from.models import CryptocurrencyExchange, Cryptocurrency
+from .models import CryptoCryptocurrencyExchange, CryptoCryptocurrency
 
-admin.site.register(CryptocurrencyExchange)
-admin.site.register(Cryptocurrency)
+admin.site.register(CryptoCryptocurrencyExchange)
+admin.site.register(CryptoCryptocurrency)
+
+
 class CryptocurrencyExchangeAdmin(admin.ModelAdmin):
     list_display = '__all__'
+
 
 class CryptocurrencyAdmin(admin.ModelAdmin):
     list_display = '__all__'
